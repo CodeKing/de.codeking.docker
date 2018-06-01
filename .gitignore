@@ -1,4 +1,5 @@
 .idea
 nginx/*.conf
+!nginx/example.conf
 .data/*
 !.data/empty
