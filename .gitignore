@@ -1,4 +1,4 @@
 .idea
-.nginx/*.conf
+nginx/*.conf
 .data/*
 !.data/empty
