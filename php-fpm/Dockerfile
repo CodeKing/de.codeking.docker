@@ -13,6 +13,10 @@ RUN apt-get update \
 # cleanup container
 RUN apt-get clean; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
 
+# install libsepa
+RUN mkdir /usr/lib/php/libsepa/
+COPY libsepa/Linux/64bit/php-7.1/sepa.so /usr/lib/php/libsepa/
+
 # run console shortcut
 RUN echo "alias shop='php -q /docker/console.php'" >> /root/.bashrc
 RUN echo "alias k='php -q /docker/console.php'" >> /root/.bashrc

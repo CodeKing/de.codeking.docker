@@ -1,0 +1,23 @@
+#  _ _ _
+# | (_) |__ ___ ___ _ __  __ _   SEPA library · www.libsepa.com
+# | | | '_ (_-</ -_) '_ \/ _` |  Copyright (c) 2013-2014 Keppler IT GmbH.
+# |_|_|_.__/__/\___| .__/\__,_|_____________________________________________
+#                  |_|
+# perl/typemap
+# Mapping of libsepa C types to Perl XS types
+# $Id: typemap 223 2014-04-17 22:45:40Z kk $
+
+TYPEMAP
+bool_t			T_IV
+const char *		T_PV
+sepa_ddtype_t		T_IV
+sepa_init_t		T_IV
+sepa_msgtype_t		T_IV
+sepa_status_t		T_IV
+sepa_t *		T_PTROBJ
+SEPA			T_PTROBJ
+sepa_stmt_parser_t *	T_PTROBJ
+SEPA::StatementParser	T_PTROBJ
+sepa_stmt_format_t	T_IV
+
+# <EOF>_____________________________________________________________________
