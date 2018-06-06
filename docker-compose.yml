@@ -9,7 +9,7 @@ services:
         - TZ=Europe/Berlin
       volumes:
         - ../${PROJECTDIR}/:/docker
-        - ./nginx/${PROJECTDIR}.conf:/etc/nginx/conf.d/default.conf
+        - ./nginx/${PROJECTDIR}.${BRANCH}.conf:/etc/nginx/conf.d/default.conf
       links:
         - php-fpm
         - mysql
