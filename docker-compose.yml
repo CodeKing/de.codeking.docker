@@ -27,7 +27,7 @@ services:
     php-fpm:
       build: php-fpm
       container_name: php
-      working_dir: /docker
+      working_dir: /docker/
       environment:
         - TZ=Europe/Berlin
       volumes:
