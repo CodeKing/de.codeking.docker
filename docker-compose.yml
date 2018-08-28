@@ -15,6 +15,7 @@ services:
         - mysql
         - redis
         - memcached
+        - mailhog
       ulimits:
         memlock:
           soft: -1
@@ -25,14 +26,17 @@ services:
        - "8080:8080"
 
     php-fpm:
-      build: php-fpm
+      build:
+        context: php-fpm
+        dockerfile: ../php-fpm/Dockerfile${PHPVERSION}
       container_name: php
       working_dir: /docker/
       environment:
         - TZ=Europe/Berlin
+        - PHP_IDE_CONFIG=serverName=127.0.0.1
       volumes:
         - ../${PROJECTDIR}/:/docker
-        - ./php-fpm/php-ini-overrides.ini:/etc/php/7.1/fpm/conf.d/99-overrides.ini
+        - ./php-fpm/php-ini-overrides.ini:/etc/php/${PHPVERSION}/fpm/conf.d/99-overrides.ini
       ulimits:
         memlock:
           soft: -1
@@ -73,3 +77,15 @@ services:
           soft: -1
           hard: -1
       mem_limit: 256m
+
+    mailhog:
+      image: mailhog/mailhog:v1.0.0
+      container_name: mailhog
+      ulimits:
+        memlock:
+          soft: -1
+          hard: -1
+      mem_limit: 256m
+      ports:
+      - "1025:1025"
+      - "8025:8025"

@@ -17,6 +17,12 @@ RUN apt-get clean; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/
 RUN mkdir /usr/lib/php/libsepa/
 COPY libsepa/Linux/64bit/php-7.2/sepa.so /usr/lib/php/libsepa/
 
+# install sendmail
+RUN curl -Lsf 'https://storage.googleapis.com/golang/go1.8.3.linux-amd64.tar.gz' | tar -C '/usr/local' -xvzf -
+ENV PATH /usr/local/go/bin:$PATH
+RUN go get github.com/mailhog/mhsendmail
+RUN cp /root/go/bin/mhsendmail /usr/bin/mhsendmail
+
 # run console shortcut
 RUN echo "alias shop='php -q /docker/console.php'" >> ~/.bashrc
 RUN echo "alias k='php -q /docker/console.php'" >> ~/.bashrc
