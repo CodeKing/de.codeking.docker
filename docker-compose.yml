@@ -28,7 +28,7 @@ services:
     php-fpm:
       build:
         context: php-fpm
-        dockerfile: ../php-fpm/Dockerfile${PHPVERSION}
+        dockerfile: ../php-fpm/${PHPVERSION}/Dockerfile
       container_name: php
       working_dir: /docker/
       environment:
